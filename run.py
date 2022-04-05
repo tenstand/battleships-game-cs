@@ -73,3 +73,7 @@ def printPlayBoard(board):
 # Returns the value at the provided co-ordinates:
     def getValue(board, x, y):
         return board[y][x]
+
+# Sets the value at the co-ordinates of the board:
+    def setValue(board, x, y, value):
+        board[y][x] = value

@@ -123,3 +123,20 @@ def takeTurn(board):
         
     return False
    
+# Play a full game. Returns 1 for a win, 0 for a loss
+    def playGame():
+        BOARD_SIZE = 3
+        NUMBER_OF_SHIPS = 3
+        BOARD = getBoard(BOARD_SIZE)
+
+    addShips(BOARD, NUMBER_OF_SHIPS)
+    numberOfTurns = 5
+
+    while(getNumberOfShips(BOARD) > 0 and numberOfTurns > 0):
+        status = str(getNumberOfShips(BOARD)) + " ships left. "
+        status += str(numberOfTurns) + " turns left"
+        print(status)
+        print("\n")
+
+        if(takeTurn(BOARD)):
+            numberOfTurns -= 1

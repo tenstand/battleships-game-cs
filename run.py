@@ -140,3 +140,12 @@ def takeTurn(board):
 
         if(takeTurn(BOARD)):
             numberOfTurns -= 1
+    
+    printPlayBoard(BOARD)
+
+    if(getNumberOfShips(BOARD) == 0):
+        print("Well done, all ships destroyed")
+        return 1
+    else:
+        print("Sorry, you have no turns left")
+        return 0

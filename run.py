@@ -52,7 +52,7 @@ def printPlayBoard(board):
     print("\n")
 
     def getNumberOfShips(board):
-    numberOfShips = 0
+        numberOfShips = 0
     for row in board:
         for cell in row:
             if(cell == SHIP):
@@ -60,7 +60,16 @@ def printPlayBoard(board):
     return numberOfShips
 
     def getRandomCoords(board):
-    x = randint(0, len(board) - 1)
-    y = randint(0, len(board) - 1)
+        x = randint(0, len(board) - 1)
+        y = randint(0, len(board) - 1)
     return x, y
+    
+# Create ships in random locations:
+    def addShips(board, numberOfShips):
+        for i in range(numberOfShips):
+            shipRow, shipColumn = getRandomCoords(board)
+            setValue(board, shipRow, shipColumn, SHIP)
 
+# Returns the value at the provided co-ordinates:
+    def getValue(board, x, y):
+        return board[y][x]

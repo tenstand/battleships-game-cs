@@ -77,3 +77,49 @@ def printPlayBoard(board):
 # Sets the value at the co-ordinates of the board:
     def setValue(board, x, y, value):
         board[y][x] = value
+
+# Validate user input:
+def validate(board, x, y):
+    validRange = range(len(board[0]))
+    try:
+        x = int(x)
+        y = int(y)
+        if(x not in validRange or y not in validRange):
+            print("Out of range!")
+            return False
+        else:
+            value = getValue(board, x, y)
+            if(value > SHIP):
+                print("You've tried those co-ordinates already!")
+                return False
+            else:
+                return True
+    except ValueError:
+        print("Please use valid co-ordinates")
+        return False
+
+def takeTurn(board):
+    printPlayBoard(board)
+    x = raw_input("Enter co-ordinate X: ")
+    y = raw_input("Enter co-ordinate Y: ")
+
+    isValid = validate(board, x, y)
+
+    if(isValid):
+        x = int(x)
+        y = int(y)
+        value = getValue(board, x, y)
+        print("\n")
+        if(value == SHIP):
+            setValue(board, x, y, HIT)
+            print("* * * * * * * *")
+            print("* Direct hit! *")
+            print("* * * * * * * *")
+
+        else:
+            print("Sorry, you missed")
+            setValue(board, x, y, MISS)
+        return True
+        
+    return False
+   
